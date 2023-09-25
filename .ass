@@ -1,0 +1,30 @@
+    <div class="container">         
+            <?php
+                    $sql_store = "SELECT * FROM `tblstores` WHERE Status=2;";
+                    if($result_store = $conn->query($sql_store)){
+                       if($result_store->num_rows > 0){
+                           $counter = 3;
+                        while($row_store = $result_store->fetch_array()){
+                            $store_ID = $row_store['Store_ID'];
+                            if($counter == 3){
+                                echo ' <div class="row">';
+                            }
+                            echo '<div class="container1 col-lg-4">
+                            <img src="include/images/ads/pexels-cottonbro-7760557.jpg" alt="Snow">
+                            <a href = "store.php"><button class="btn">Shop Now</button></a> </div>';
+                            if($counter == 2){
+                                echo '</div>';
+                                $counter = 0;
+                            }
+                            $counter +=1;   
+                            
+                        }
+                 // Free result set
+                 $result->free();
+                    } 
+                } 
+                // Close connection
+                $conn->close();
+            ?>   
+        </div>
+    </div> <br>
